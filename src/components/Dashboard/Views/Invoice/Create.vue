@@ -2,7 +2,7 @@
 <div>
     <div class="card card-plain">
         <div class="card-header">
-            <h4 class="title">New Invoice</h4>
+            <h4 class="title">Invoice</h4>
         </div>
     </div>
 <header-invoice v-bind="tableData"></header-invoice>
@@ -20,12 +20,12 @@ import PdfBuilder from '../../Layout/Pdf.vue'
         tableData:{
                 company: {
                 id: null,
-                name: "MARCOS VINICIUS DE SOUZA MENDES",
-                phone: "0404988037",
-                abn: "86507573157"
+                name: null,
+                phone: null,
+                abn: null
                 },
                 customer: {
-                   name: "Charles Transport Pty Ltd",
+                   name: null,
                    abn: null,
                    customer: null
                 },

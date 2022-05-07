@@ -1,5 +1,9 @@
 <template>
-        <button @click="generatePDF">Generate PDF</button>
+         <div class="text-center">
+          <button class="btn btn-info btn-fill btn-wd" @click="generatePDF">
+            Generate PDF
+          </button>
+        </div>
 </template>
 <script>
 import jspdf from 'jspdf'
@@ -37,8 +41,12 @@ import Button from '../../UIComponents/Button.vue';
               doc.text("INVOICE",200,20,headerRight);
               doc.setFontSize(10);
               doc.text(data.company.name,200,30,headerRight);
-              doc.text(data.company.abn,200,40,headerRight);
-              doc.text(data.company.phone,200,50,headerRight);
+              if(data.company.abn == null)
+                data.company.abn = "";
+              if(data.company.phone == null)
+                data.company.phone = "";
+              doc.text("ABN: "+data.company.abn,200,40,headerRight);
+              doc.text("Phone: "+data.company.phone,200,50,headerRight);
               
               doc.line(0,60,220,60);
               
@@ -71,12 +79,30 @@ import Button from '../../UIComponents/Button.vue';
               doc.text("PRICE",150,100,headerTable);
               doc.text("AMOUNT",180,100,headerTable);
 
-            var row = 110;
+            var row = 110;  
             for(var i=0;i < data.items.length; i++){
             if(data.items[i].description == null)
             data.items[i].description = "";
                 //TABLE ROW
               doc.text(data.items[i].name,15,row);
+              if(data.items[i].description.length > 45){
+                let x = 45;
+                let j = 0;
+                let xRow = 1;
+                let loop = true;
+                while(loop){
+                    if(x <= data.items[i].description.length)
+                      doc.text(data.items[i].description.slice(j,x),15,row+4*xRow);
+                    else{
+                      doc.text(data.items[i].description.slice(j,data.items[i].description.length),15,row+4*xRow);
+                      loop = false;
+                    }
+                    xRow++; 
+                    j = x;
+                    x+= 45;
+                }
+              }
+              else
               doc.text(data.items[i].description,15,row+4);
               doc.text(data.items[i].quantity,120,row,headerTable);
               doc.text("$"+data.items[i].price,150,row,headerTable);    

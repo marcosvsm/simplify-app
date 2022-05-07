@@ -8,16 +8,19 @@
                       label="BILL TO"
                       placeholder="Customer"
                       v-model="customer.name"
+                      :required="true"
                       >
             </fg-input>
             <fg-input type="text"
                       placeholder="ABN"
                       v-model="customer.abn"
+                      maxlength="11"
                       >
             </fg-input>
             <fg-input type="text"
                       placeholder="Phone"
                       v-model="customer.phone"
+                      maxlength="12"
                       >
             </fg-input>
             <fg-input type="text"
@@ -65,6 +68,7 @@
                                                 placeholder="Name"
                                                 v-model="scope.row.name"
                                                 :required="true"
+                                                maxlength="45"
                                                 ></fg-input>
                                 </template>
                             </el-table-column>
@@ -73,6 +77,7 @@
                                 <fg-input type="text"
                                                 placeholder="Description"
                                                 v-model="scope.row.description"
+                                                maxlength="90"
                                                 ></fg-input>
                                 </template>
                             </el-table-column>
@@ -135,11 +140,11 @@
             ></textarea>
           </div>
         </div>
-        <div class="text-center">
+       <!-- <div class="text-center">
           <button type="submit" class="btn btn-info btn-fill btn-wd" @click.prevent="createInvoice">
             Save and Continue
           </button>
-        </div>
+        </div> -->
         <pdf-builder :tableData="tableData"></pdf-builder>
         <div class="clearfix"></div>
       </form>

@@ -6,9 +6,11 @@
           <div class="col-md-8">
             <fg-input type="text"
                       label="COMPANY"
-                      :disabled="true"
+                      :disabled="false"
                       placeholder="Name"
                       v-model="company.name"
+                      maxlength="50"
+                      :required="true"
                       >
             </fg-input>
           </div>
@@ -17,11 +19,13 @@
             <fg-input type="text"
                       placeholder="Phone"
                       v-model="company.phone"
+                      maxlength="12"
                       >
             </fg-input>
             <fg-input type="text"
                       placeholder="ABN"
                       v-model="company.abn"
+                      maxlength="11"
                       >
             </fg-input>
           </div>

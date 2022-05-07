@@ -27,6 +27,8 @@ import createCompany from 'src/components/Dashboard/Views/Company/Create.vue'
 //Invoice
 const Invoice = () => import('src/components/Dashboard/Views/Invoice/Invoice.vue')
 import createInvoice from 'src/components/Dashboard/Views/Invoice/Create.vue'
+import freeInvoice from 'src/components/Dashboard/Views/Invoice/FreeInvoice.vue'
+
 
 // Components pages
 import Buttons from 'src/components/Dashboard/Views/Components/Buttons.vue'
@@ -206,8 +208,13 @@ let invoicesMenu ={
       path: "create",
       name: "Invoice Create",
       component: createInvoice
-    }
+    } 
   ]
+}
+
+let fInvoice ={
+  path: "/invoice/free",
+  component: freeInvoice
 }
 
 let companyMenu ={
@@ -254,6 +261,7 @@ const routes = [
   examplesMenu,
   invoicesMenu,
   companyMenu,
+  fInvoice,
   {
     path: '/admin',
     component: DashboardLayout,
